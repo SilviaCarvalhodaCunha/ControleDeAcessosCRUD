@@ -9,4 +9,4 @@ type TResponseUser = z.infer<typeof responseUserSchema>
 
 type TUpdateRequestUser = z.infer<typeof updateUserSchema>
 
-export { TUser, TRequestUser, TResponseUser, TUpdateRequestUser}
+export { TUser, TRequestUser, TResponseUser, TUpdateRequestUser }

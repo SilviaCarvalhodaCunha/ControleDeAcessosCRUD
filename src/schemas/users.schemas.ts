@@ -5,14 +5,20 @@ const userSchema = z.object({
     name: z.string(),
     email: z.string().email(),
     password: z.string(),
-    admin: z.boolean(),
+    admin: z.boolean().optional(),
     active: z.boolean()
 })
 
-const requestUserSchema = userSchema.omit({ id: true })
+const requestUserSchema = userSchema.omit({ id: true, active: true })
 
 const responseUserSchema = userSchema.omit({ password: true})
 
-const updateUserSchema = requestUserSchema.partial()
+const requestAllUserSchema = z.array(responseUserSchema)
 
-export { userSchema, requestUserSchema, responseUserSchema, updateUserSchema }
+const requestUserUpdateSchema =  userSchema.omit({ id: true, active: true, admin: true})
+
+const updateUserSchema = requestUserUpdateSchema.partial()
+
+
+
+export { userSchema, requestUserSchema, responseUserSchema, requestAllUserSchema, updateUserSchema }
